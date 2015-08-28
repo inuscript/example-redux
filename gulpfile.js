@@ -21,8 +21,7 @@ var libs = [
 gulp.task('browserify-lib', function() {
   var b = browserify({
     require: libs
-  })
-  b.bundle()
+  }).bundle()
     .pipe(source("lib.js"))
     .pipe(gulp.dest(path.join(dest, "lib")))
 })
@@ -35,7 +34,6 @@ gulp.task('browserify-client', function() {
       entries: path.join(base, file),
       extensions: ['jsx', 'js'],
       transform: [babelify],
-      externals: libs
     })
     libs.forEach(function(lib){
       b.external(lib)
@@ -48,7 +46,7 @@ gulp.task('browserify-client', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('js/**/*', ['browserify'])
+  gulp.watch('src/**/*', ['browserify'])
 });
 
 gulp.task('browserify', [ 'browserify-lib', 'browserify-client']);

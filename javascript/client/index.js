@@ -1,6 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -29,22 +33,33 @@ var App = (function (_React$Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      return _react2['default'].createElement('div', null);
+      return _react2['default'].createElement(
+        'div',
+        null,
+        'Hello'
+      );
     }
   }]);
 
   return App;
 })(_react2['default'].Component);
 
+exports['default'] = App;
+module.exports = exports['default'];
+
 },{"react":"react","redux":"redux"}],2:[function(require,module,exports){
 "use strict";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
 var _componentAppJsx = require("../component/App.jsx");
 
 var _componentAppJsx2 = _interopRequireDefault(_componentAppJsx);
 
-document.querySelector("body", React.createElement(_componentAppJsx2["default"], null));
+document.querySelector("body", _react2["default"].createElement(_componentAppJsx2["default"], null));
 
-},{"../component/App.jsx":1}]},{},[2]);
+},{"../component/App.jsx":1,"react":"react"}]},{},[2]);
