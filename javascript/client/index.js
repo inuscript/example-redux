@@ -60,6 +60,12 @@ var _componentAppJsx = require("../component/App.jsx");
 
 var _componentAppJsx2 = _interopRequireDefault(_componentAppJsx);
 
-document.querySelector("body", _react2["default"].createElement(_componentAppJsx2["default"], null));
+var startApp = function startApp() {
+  var container = document.querySelector("body");
+  _react2["default"].render(_react2["default"].createElement(_componentAppJsx2["default"], null), container);
+};
+document.addEventListener('DOMContentLoaded', function () {
+  startApp();
+});
 
 },{"../component/App.jsx":1,"react":"react"}]},{},[2]);

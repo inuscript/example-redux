@@ -1,4 +1,10 @@
 import React from "react"
 import App from "../component/App.jsx"
 
-document.querySelector("body", <App />)
+var startApp = function(){
+  var container = document.querySelector("body")
+  React.render(<App />, container)
+}
+document.addEventListener('DOMContentLoaded', function(){
+  startApp()
+})
