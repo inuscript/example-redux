@@ -21,6 +21,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _redux = require('redux');
 
+var _libHoga = require("../lib/hoga");
+
+var _libHoga2 = _interopRequireDefault(_libHoga);
+
 var App = (function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -47,7 +51,7 @@ var App = (function (_React$Component) {
 exports['default'] = App;
 module.exports = exports['default'];
 
-},{"react":"react","redux":"redux"}],2:[function(require,module,exports){
+},{"../lib/hoga":3,"react":"react","redux":"redux"}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -65,8 +69,6 @@ var _componentAppJsx = require("./component/App.jsx");
 
 var _componentAppJsx2 = _interopRequireDefault(_componentAppJsx);
 
-console.log("z");
-
 function startApp() {
   var container = document.querySelector("body");
   _react2["default"].render(_react2["default"].createElement(_componentAppJsx2["default"], null), container);
@@ -75,6 +77,19 @@ function startApp() {
 module.exports = exports["default"];
 
 },{"./component/App.jsx":1,"react":"react"}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports["default"] = function () {
+  console.log("fuga");
+};
+
+module.exports = exports["default"];
+
+},{}],4:[function(require,module,exports){
 "use strict";
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -87,4 +102,4 @@ document.addEventListener('DOMContentLoaded', function () {
   (0, _appIndexJsx2["default"])();
 });
 
-},{"../app/index.jsx":2}]},{},[3]);
+},{"../app/index.jsx":2}]},{},[4]);

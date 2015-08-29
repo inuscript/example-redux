@@ -33,43 +33,27 @@ gulp.task('browserify-lib', function() {
     .pipe(source("lib.js"))
     .pipe(gulp.dest(path.join(dest, "lib")))
 })
-//
-// gulp.task('browserify-app', function() {
-//   var apps = glob.sync("./src/app/**/*", {nodir: true })
-//   var b = browserify({
-//     extensions: ['js', 'jsx'],
-//   })
-//   b.require("./src/app/")
-//   // apps.forEach(function(a){
-//   //   b.require(a)
-//   // })
-//   b = externalLibs(b)
-//   b.transform(babelify)
-//   b.bundle()
-//     .pipe(source("app.js"))
-//     .pipe(gulp.dest(path.join(dest, "lib")))
-// })
 
 gulp.task('browserify-entry', function() {
   var base = "./src/entry/"
   var entries = "**/*"
-  var files = glob.sync(entries, {cwd: base})
-  console.log(files)
-  files.forEach(function(file){
-    var b = browserify({
-      entries: path.join(base, file),
-      extensions: ['js', 'jsx'],
-    })
-    // .plugin(factor, {
-    //   outputs: glob.sync(entries)
-    // })
-    b = externalLibs(b)
-    b.transform(babelify)
-    var fileName = replaceExt(file, ".js")
-    b.bundle()
-      .pipe(source(fileName))
-      .pipe(gulp.dest(path.join(dest, "client")))
+  var files = glob.sync(entries)
+  // console.log(files)
+  // files.forEach(function(file){
+  var b = browserify({
+    entries: files,
+    extensions: ['js', 'jsx'],
   })
+  // .plugin(factor, {
+  //   outputs: glob.sync(entries)
+  // })
+  b = externalLibs(b)
+  b.transform(babelify)
+  // var fileName = replaceExt(file, ".js")
+  b.bundle()
+    .pipe(source("common.js"))
+    .pipe(gulp.dest(path.join(dest, "client")))
+  // })
 });
 
 gulp.task('watch', function() {
