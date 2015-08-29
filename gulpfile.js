@@ -11,7 +11,6 @@ var replaceExt = require('replace-ext')
 
 var dest = './javascript/'
 
-
 gulp.task('clean', function() {
   del(dest)
 })
@@ -34,7 +33,7 @@ gulp.task('browserify-lib', function() {
     .pipe(source("lib.js"))
     .pipe(gulp.dest(path.join(dest, "lib")))
 })
-// 
+//
 // gulp.task('browserify-app', function() {
 //   var apps = glob.sync("./src/app/**/*", {nodir: true })
 //   var b = browserify({
@@ -44,7 +43,7 @@ gulp.task('browserify-lib', function() {
 //   // apps.forEach(function(a){
 //   //   b.require(a)
 //   // })
-//   b = externalLibs(b)  
+//   b = externalLibs(b)
 //   b.transform(babelify)
 //   b.bundle()
 //     .pipe(source("app.js"))
@@ -54,13 +53,16 @@ gulp.task('browserify-lib', function() {
 gulp.task('browserify-entry', function() {
   var base = "./src/entry/"
   var entries = "**/*"
-  glob.sync(entries, {cwd: base}).forEach(function(file){
+  var files = glob.sync(entries, {cwd: base})
+  console.log(files)
+  files.forEach(function(file){
     var b = browserify({
       entries: path.join(base, file),
       extensions: ['js', 'jsx'],
-    }).plugin(factor, {
-      outputs: glob.sync(entries)
     })
+    // .plugin(factor, {
+    //   outputs: glob.sync(entries)
+    // })
     b = externalLibs(b)
     b.transform(babelify)
     var fileName = replaceExt(file, ".js")
