@@ -35,25 +35,22 @@ gulp.task('browserify-lib', function() {
 })
 
 gulp.task('browserify-entry', function() {
-  var base = "./src/entry/"
-  var entries = "**/*"
-  var files = glob.sync(entries)
-  // console.log(files)
-  // files.forEach(function(file){
+  // var base = "./src/entry/"
+  var entries = "./src/entry/**/*"
+  var files = glob.sync(entries, {nodir: true})
   var b = browserify({
     entries: files,
     extensions: ['js', 'jsx'],
   })
-  // .plugin(factor, {
-  //   outputs: glob.sync(entries)
-  // })
-  b = externalLibs(b)
-  b.transform(babelify)
-  // var fileName = replaceExt(file, ".js")
-  b.bundle()
-    .pipe(source("common.js"))
-    .pipe(gulp.dest(path.join(dest, "client")))
-  // })
+  .plugin(factor, {
+    o: files
+  })
+  .transform(babelify)
+  .bundle()
+  .pipe(source("common.js"))
+  .pipe(gulp.dest(path.join(dest, "client")))
+  // b = externalLibs(b)
+
 });
 
 gulp.task('watch', function() {
@@ -62,7 +59,6 @@ gulp.task('watch', function() {
 
 gulp.task('browserify', [
   'browserify-lib',
-  // 'browserify-app',
   'browserify-entry'
 ]);
 gulp.task('default', ['browserify', 'watch']);
