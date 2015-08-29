@@ -1,0 +1,31 @@
+{
+  "name": "example-redux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp clean default",
+    "test": "mocha --compilers js:babel/register"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.13.3",
+    "redux": "^1.0.1",
+    "replace-ext": "0.0.1"
+  },
+  "devDependencies": {
+    "babelify": "^6.2.0",
+    "browserify": "^11.0.1",
+    "budo": "^4.2.1",
+    "del": "^1.2.1",
+    "garnish": "^2.3.0",
+    "glob": "^5.0.14",
+    "gulp": "^3.9.0",
+    "gutil": "^1.6.4",
+    "mocha": "^2.2.5",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
