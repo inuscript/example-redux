@@ -38,12 +38,15 @@ gulp.task('browserify-entry', function() {
   // var base = "./src/entry/"
   var entries = "./src/entry/**/*"
   var files = glob.sync(entries, {nodir: true})
+  var outputs = files.map(function(file){
+    file.replace("./src/entry", "./javascript/entry")
+  })
   var b = browserify({
     entries: files,
     extensions: ['js', 'jsx'],
   })
   .plugin(factor, {
-    o: files
+    output: outputs
   })
   .transform(babelify)
   .bundle()
