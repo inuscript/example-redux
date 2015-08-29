@@ -48,12 +48,12 @@ gulp.task('browserify-entry', function() {
   .plugin(factor, {
     output: outputs
   })
-  .transform(babelify)
+  .transform(babelify.configure({
+    only: /src\/.*/
+  }))
   .bundle()
   .pipe(source("common.js"))
   .pipe(gulp.dest(path.join(dest, "client")))
-  // b = externalLibs(b)
-
 });
 
 gulp.task('watch', function() {
