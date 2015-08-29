@@ -39,7 +39,7 @@ gulp.task('browserify-entry', function() {
   var entries = "./src/entry/**/*"
   var files = glob.sync(entries, {nodir: true})
   var outputs = files.map(function(file){
-    file.replace("./src/entry", "./javascript/entry")
+    return file.replace("./src/entry", "./javascript/entry")
   })
   var b = browserify({
     entries: files,
